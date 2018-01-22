@@ -36,7 +36,12 @@ class IAGOBOT:
                       )
         
         self.bot.set_trainer(ListTrainer)
-
+        
+        #    ATTENTION :
+        #   Pour le moment ne faire l'apprentissage qu'une seule fois
+        #   Si la base de donnée doit etre modifiée, la supprimer, ajouter
+        #   le texte voulu a la conversation ci dessous, et décommenter la ligne
+        
         self.conversation = [
             "quel est le sens de la vie ?",
             "Quel est ton sens ?",
@@ -389,11 +394,6 @@ class IAGOBOT:
             "Je me demande si exister est une punition temporaire. Ou un jeu de mots. Ou un phénomène incompressible pour lequel les choses se manifestent, se touchent et s’entremêlent."
             ]
         
-        #    ATTENTION :
-        #   Pour le moment ne faire l'apprentissage qu'une seule fois
-        #   Si la base de donnée doit etre modifiée, la supprimer, ajouter
-        #   le texte voulu a la conversation ci dessous, et décommenter la ligne
-        
         #self.bot.train(self.conversation)
 
         print("Chatbot Ready")
@@ -414,11 +414,45 @@ class IAGOBOT:
         print(message)
         if message == '/reset':
             self.bot.logic.reset_blacklist()
+        elif message == '/train':
+            self.train()
         elif message == '/exit':
             self.osc_server.shutdown()
             sys.exit(0)
         else:
             self.getResponse(message)
+            
+    def train(self):
+        print("Deleting DB")
+        try:
+            os.remove(this_dir_path + "/IAGOTCHI_BOT1.db")
+            os.remove(this_dir_path + "/IAGOTCHI_BOT1.db-shm")
+            os.remove(this_dir_path + "/IAGOTCHI_BOT1.db-wal")
+        except OSError:
+            print("DB doesn't exist")
+        
+        print("Rebuilding DB")
+        #try:
+        self.bot = ChatBot("IAGOBOT1",
+                      tie_breaking_method="random_response",
+                      storage_adapter="chatterbot.storage.SQLStorageAdapter",
+                      response_selection_method=get_random_response,
+                      logic_adapters=[
+                          {
+                              'import_path': 'IAGOAdapters.HeureAdapter',
+                              },
+                          "chatterbot.logic.BestMatch"
+                          ],
+                      # input_adapter="chatterbot.input.TerminalAdapter",
+                      # output_adapter="chatterbot.output.TerminalAdapter",
+                      filters=["chatterbot.filters.RepetitiveResponseFilter"],
+                      database=this_dir_path + "/IAGOTCHI_BOT1.db"
+                      )
+        self.bot.set_trainer(ListTrainer)
+        self.bot.train(self.conversation)
+        
+        print("Chatbot Ready")
+        self.osc_client.send("/chatbot/ready")
         
 if __name__ == '__main__':
     if len(sys.argv) == 1:
