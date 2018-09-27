@@ -70,9 +70,9 @@ class MultiLogicAdapter(LogicAdapter):
 
                 if output.text in self.blacklist:
                     print('BLACKLISTED', output.text)
-                    continue
+                    break
                 results.append((output.confidence, output,))
-
+                
                 self.logger.info(
                     '{} selected "{}" as a response with a confidence of {}'.format(
                         adapter.class_name, output.text, output.confidence
@@ -83,9 +83,11 @@ class MultiLogicAdapter(LogicAdapter):
                     result = output
                     max_confidence = output.confidence
             else:
+                #print('NO RESULT')
                 self.logger.info(
                     'Not processing the statement using {}'.format(adapter.class_name)
                 )
+                #break;
 
         # If multiple adapters agree on the same statement,
         # then that statement is more likely to be the correct response
@@ -100,6 +102,19 @@ class MultiLogicAdapter(LogicAdapter):
         result.confidence = max_confidence
         if result.text != '':
             self.blacklist.add(result.text)
+            
+        if result.text == statement:
+            print('SAME RESPONSE !!!')
+            result = self.get_adapters()[0].chatbot.storage.get_random()
+            result.confidence = max_confidence
+            print('RANDOM', result.text)
+        
+        if result.text == '':
+            print('NO RESULT !!!')
+            result = self.get_adapters()[0].chatbot.storage.get_random()
+            result.confidence = max_confidence
+            print('RANDOM', result.text)
+        
         return result
 
     def get_greatest_confidence(self, statement, options):

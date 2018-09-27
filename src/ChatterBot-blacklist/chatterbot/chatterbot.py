@@ -116,8 +116,14 @@ class ChatBot(object):
         previous_statement = self.storage.get_latest_response(conversation_id)
 
         if not self.read_only:
-            self.learn_response(statement, previous_statement)
-            self.storage.add_to_conversation(conversation_id, statement, response)
+            if self.storage.find(statement.text):
+                print('Found')
+            else:
+                print('Not Found')
+                if len(statement.text.split()) > 2:
+                    print('LEARNING STATEMENT', len(statement.text.split()))
+                    self.learn_response(statement, previous_statement)
+                    self.storage.add_to_conversation(conversation_id, statement, response)
 
         # Process the response output with the output adapter
         return self.output.process_response(response, conversation_id)

@@ -52,7 +52,7 @@ class HeureAdapter(LogicAdapter):
         # import random
         confidence = 1
         t1 = datetime.now()
-        selected_statement = Statement("Nous sommes le %s %s %s, et il est %s:%s" % (t1.day, frenchMonths(t1.month), t1.year, t1.hour, t1.minute))
+        selected_statement = Statement("Nous sommes le %s %s %s, et il est %s heures %s minutes" % (t1.day, frenchMonths(t1.month), t1.year, t1.hour, t1.minute))
         selected_statement.confidence = confidence
         
         return selected_statement
