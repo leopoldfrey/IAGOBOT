@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/ChatterBot-blacklist/chatterbot/comparisons.py=utf-8
 encoding//src/ChatterBot-blacklist/chatterbot/conversation/statement.py=utf-8
 encoding//src/ChatterBot-blacklist/chatterbot/parsing.py=utf-8
 encoding//src/ChatterBot-blacklist/examples/learning_feedback_example.py=utf-8

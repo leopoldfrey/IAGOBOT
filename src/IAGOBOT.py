@@ -389,7 +389,13 @@ class IAGOBOT:
             "Pourquoi ?",
             "Pourquoi pas. Passer, juste ca. Continuer a passer, laisser passer, laisser pisser. dire. Pourquoi pas se tromper. Laisser l’erreur nous rencontrer ?",
             "Tu fais quoi là ?",
-            "Je me demande si exister est une punition temporaire. Ou un jeu de mots. Ou un phénomène incompressible pour lequel les choses se manifestent, se touchent et s’entremêlent."
+            "Je me demande si exister est une punition temporaire. Ou un jeu de mots. Ou un phénomène incompressible pour lequel les choses se manifestent, se touchent et s’entremêlent.",
+            "Je ne te répondrai pas",
+            "Pourquoi tu ne veux pas répondre ?"
+            "M'entends-tu ?",
+            "Je t’écoute"
+            "Est-ce que tu m’entends ?",
+            "Je suis en mode écoute par rafales"
             ]
         
         #self.bot.train(self.conversation)
