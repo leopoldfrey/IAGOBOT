@@ -6,7 +6,7 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python interpreter</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
-<path>/Users/leo/Documents/workspace/IAGOBOT/src/ChatterBot-blacklist</path>
-<path>/Users/leo/Documents/workspace/IAGOBOT/libs</path>
+<path>${PROJECT_LOC}/src/ChatterBot-blacklist</path>
+<path>${PROJECT_LOC}/libs</path>
 </pydev_pathproperty>
 </pydev_project>
