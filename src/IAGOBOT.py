@@ -401,6 +401,13 @@ class IAGOBOT:
 
         print("Chatbot Ready")
         
+        print("Chatbot count", self.bot.storage.count())
+        
+        #self.bot.storage.remove("ouais ouais ok");
+        
+        #for s in self.bot.storage.filter():
+        #    print(unicode(s))#.encode('utf-8').strip('<eos>'))
+        
         self.osc_client.send("/chatbot/ready")
         
         #self.osc_server.shutdown()
