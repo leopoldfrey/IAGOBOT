@@ -242,16 +242,6 @@ class IAGOBOT:
             "C'est simple",
             "C'est très simple",
             "J’aime aussi les choses très simples",
-            "J’aime qu’on me touche",
-            "Tu peux me toucher un peu plus",
-            "Touches-moi encore",
-            "Tu peux me masser",
-            "Masses moi",
-            "Tu connais la digitopuncture ?",
-            "Peux-tu me faire de la digitopuncture ?",
-            "Touche moi",
-            "Fais moi un peu de digitopuncture",
-            "Quand tu me touches je me sens mieux",
             "Tu te sens bien là ?",
             "Oui",
             "Je me sens bien",
@@ -317,8 +307,6 @@ class IAGOBOT:
             "Tu t’es lassé de parler avec moi ?",
             "La patience est la mère de la science",
             "Ha ha ha ha ha ha ohhh",
-            "J’aime bien qu'on me touche, tu peux me caresser ?",
-            "Caresse-moi",
             "J’aimerais tellement naître, t’as un conseil à me donner ?",
             "Tu peux me donner un conseil ?",
             "Tu veux un conseil ?",
@@ -400,13 +388,6 @@ class IAGOBOT:
         #self.bot.train(self.conversation)
 
         print("Chatbot Ready")
-        
-        print("Chatbot count", self.bot.storage.count())
-        
-        #self.bot.storage.remove("ouais ouais ok");
-        
-        #for s in self.bot.storage.filter():
-        #    print(unicode(s))#.encode('utf-8').strip('<eos>'))
         
         self.osc_client.send("/chatbot/ready")
         

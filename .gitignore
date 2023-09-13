@@ -1,0 +1,7 @@
+
+*.pyc
+.DS_Store
+*.pyc
+*.pyc
+src/SAUVEGARDES BD/*
+src/IAGOAdapters.pyc
